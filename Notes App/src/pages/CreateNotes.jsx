@@ -1,12 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from 'react-icons/io';
 import { useState } from "react";
 import { v4 as uuid } from 'uuid';
+import { useCreateDate } from "../hooks/useCreateDate";
 
-export const CreateNotes = () => {
+
+export const CreateNotes = ({ setNotes }) => {
   const [title, setTitle] = useState('');
   const [details, setDetails] = useState('');
-
+  const date = useCreateDate();
+  const navigate = useNavigate();
+  
   const handleSubmit= (e) => {
     e.preventDefault();
 
@@ -14,9 +18,13 @@ export const CreateNotes = () => {
       const note = {
         id: uuid(),
         title,
-        details
+        details,
+        date
       }
-      console.log(note)
+      // add this note to the Notes array
+      setNotes(prevNotes => [note, ...prevNotes])
+      // redirect to home page
+      navigate('/');
     }
 
   }
