@@ -2,6 +2,7 @@ import { CiSearch } from 'react-icons/ci';
 import { BsPlusLg } from "react-icons/bs";
 import dummyNotes from '../dummy_notes.js';
 import { Link } from 'react-router-dom';
+import { NoteItem } from '../components/NoteItem.jsx';
 
 export const Notes = () => {
   return (
@@ -12,9 +13,9 @@ export const Notes = () => {
 				<button className='btn'><CiSearch/></button>
 			</header>
 			<div className="notes__container">
-				{/* {
-					dummyNotes.map(note => <NoteItem key= {note.id} />)
-				} */}
+				{
+					dummyNotes.map(note => <NoteItem key= {note.id} note={note}/>)
+				}
 			</div>
 			<Link className='btn add__btn'><BsPlusLg/></Link>
 		</section>
