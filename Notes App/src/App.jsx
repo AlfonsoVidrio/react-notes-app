@@ -19,7 +19,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Notes notes = {notes} />} />
           <Route path="/create-note" element={<CreateNotes setNotes={setNotes}/>} />
-          <Route path="/edit-note/:id" element={<EditNotes />} />
+          <Route path="/edit-note/:id" element={<EditNotes notes={notes} setNotes={setNotes} />} />
         </Routes>
       </BrowserRouter>
     </main>
