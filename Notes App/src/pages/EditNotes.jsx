@@ -32,10 +32,12 @@ export const EditNotes = ({ notes, setNotes }) => {
   }
 
   const handleDelete = () => {
-    const newNotes = notes.filter(item => item.id != id);
+    if(window.confirm('¿Estas seguro que quieres eliminar la nota?')){
+      const newNotes = notes.filter(item => item.id != id);
 
-    setNotes(newNotes);
-    navigate('/')
+      setNotes(newNotes);
+      navigate('/')
+    }
   }
 
   return (
